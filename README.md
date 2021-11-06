@@ -1,5 +1,5 @@
 # Energy Volatility Prediction
-### UMBC Fall 2021 Data Science Capstone
+## UMBC Fall 2021 Data Science Capstone
 ### Instructions for use:
 1. We have a data folder saved on our google drive as a shared drive. This contains the data gathered and processed in the notebooks found in this repository.
   a. Permission is required to access this folder (our professor has permission).
