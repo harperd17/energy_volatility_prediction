@@ -11,7 +11,7 @@
 ## Electricity Price
 <br>
 We have monthly electricity price data by state. The average and standard deviation price was calculated for each state for each year which were used to calculated the coefficient of variation as such: (standard deviation of price across all months in a year) / (mean price across all months in a year).<br>
-# Electricity Consumption<br>
+## Electricity Consumption<br>
 We have historical monthly electricity consumption based on sectors (COM, IND, and RES).  Which are aggregated to an annual level and measured in kWh.<br>
 # Powerplant<br>
 We have historical monthly electricity net generation data from each plant in the United States. Which are aggregated to an annual level and measured in MWh.<br>
