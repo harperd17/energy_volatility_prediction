@@ -8,9 +8,11 @@
 4. Since the shared folder should show up as part of your shared drive at the user end, the folder paths should all work.
 ## Data: 2001-2020
 **Electricity Price**<br>
-We have monthly electricity price data by state. The average and standard deviation price was calculated for each state for each year which were used to calculated the coefficient of variation as such: (standard deviation of price across all months in a year)/(mean price across all months in a year).<br>
+We have monthly electricity price data by state. The average and standard deviation price was calculated for each state for each year which were used to calculated the coefficient of variation as such: (standard deviation of price across all months in a year) / (mean price across all months in a year).<br>
+**Electricity Consumption**<br>
+We have historical monthly electricity consumption based on sectors (COM, IND, and RES).  Which are aggregated to an annual level and measured in kWh.<br>
 **Powerplant**<br>
-We have historical power generation data from each plant in the United States on a monthly basis. This was aggregated to an annual level.<br>
+We have historical monthly electricity net generation data from each plant in the United States. Which are aggregated to an annual level and measured in MWh.<br>
 **Weather**<br>
 We have monthly historical temperatures and palmer drought severity index values (pdsi) across the US gridded at a 60km x 60km resolution. Data from 1981 to 2000 was used to calculate averages and standard deviations from each of these locations. These were used to standardize the data for our years of interest (2001-2020). This data is aggregated to a state level. Currently, we are using three derived terms; number of summer months with temperatures above 1 standard deviation above the mean, number of winter months with temperatures below 1 standard deviation below the mean, and number of months with a pdsi value lower than 1 standard deviation below the mean (the lower the pdsi, the worse the drought).<br>
 **Futures Contracts**<br>
