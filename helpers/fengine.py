@@ -1,4 +1,4 @@
-class Fengine():
+class Fengine:
 
     def outlier_thresh(df, threshhold=3):
 
@@ -42,7 +42,7 @@ class Fengine():
 
         return df_change
 
-   def col_not_endswith(df, endswith_criteria="R_"):
+    def col_not_endswith(df, endswith_criteria="R_"):
 
         df_change = df[[col for col in df.columns
                         if not col.endswith(endswith_criteria)
