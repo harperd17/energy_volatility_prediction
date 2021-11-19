@@ -6,7 +6,7 @@ class Fengine:
 
         df["target_COV"] = df["target_COV"].mean()+threshold_amount
 
-        df = df.rename(columns={"target_COV": {f"target_COV_OT_{threshold}"}})
+        df = df.rename(columns={"target_COV": f"target_COV_OT_{threshold}"})
 
         print("Outlier Threshold Applied:", threshold)
 
