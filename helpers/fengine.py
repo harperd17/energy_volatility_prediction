@@ -40,9 +40,10 @@ class Fengine():
                         if not col.startswith(startswith_criteria)
                         and not col == "year.1"]]
 
-        return df_change
 
-    def col_not_endswith(df, endswith_criteria="R_"):
+return df_change
+
+   def col_not_endswith(df, endswith_criteria="R_"):
 
         df_change = df[[col for col in df.columns
                         if not col.endswith(endswith_criteria)
