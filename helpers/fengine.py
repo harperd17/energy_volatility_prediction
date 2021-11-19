@@ -13,6 +13,7 @@ class Fengine():
         _ = df['target_COV'].hist(bins=100)
 
         df = df.query('target_COV < '+str(outlier_thresh))
+
         _ = df['target_COV'].pow(0.5).hist(bins=100)
 
         return df
@@ -39,9 +40,9 @@ class Fengine():
                         if not col.startswith(startswith_criteria)
                         and not col == "year.1"]]
 
-    return df_change
+        return df_change
 
-    def col_not_endswith(df, endswith_criteria="R_"):
+   def col_not_endswith(df, endswith_criteria="R_"):
 
         df_change = df[[col for col in df.columns
                         if not col.endswith(endswith_criteria)
