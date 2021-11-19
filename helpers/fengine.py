@@ -10,8 +10,6 @@ class Fengine:
         df = df.query('target_COV < '+str(outlier_thresh))
         _ = df['target_COV'].pow(0.5).hist(bins=100)
 
-        df = df.rename({"target_COV": f"target_COV_{outlier_thresh}"})
-
         return df
 
     def col_startswith(df, startswith_criteria="R_"):
