@@ -1,6 +1,6 @@
 class Fengine:
 
-    def outlier_thresh(df, threshhold=3):
+    def outlier_thresh(df, threshold=3):
 
         threshold_amount = threshold * df["target_COV"].std()
 
