@@ -2,19 +2,15 @@ class Fengine:
 
     def outlier_thresh(df, threshold=3):
 
-        threshold_amount = threshold * df["target_COV"].std()
+        _ = df['target_COV'].hist(bins=100)
 
-        df["target_COV"] = df["target_COV"].mean()+threshold_amount
+        outlier_thresh = df['target_COV'].mean()+threshold*df['target_COV'].std()
+        print(outlier_thresh)
 
-        df = df.rename(columns={"target_COV": f"target_COV_OT_{threshold}"})
+        df = df.query('target_COV < '+str(outlier_thresh))
+        _ = df['target_COV'].pow(0.5).hist(bins=100)
 
-        print("Outlier Threshold Applied:", threshold)
-
-        _ = df[f"target_COV_OT_{threshold}"].hist(bins=100)
-
-        df = df.query(f'target_COV_OT_{threshold} < {threshold_amount}')
-
-        _ = df[f'target_COV_OT_{threshold}'].pow(0.5).hist(bins=100)
+        df = df.rename({"target_COV": f"target_COV_{outlier_thresh}"})
 
         return df
 
