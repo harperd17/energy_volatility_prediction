@@ -1,51 +1,51 @@
-class Fengine:
+import sklearn
 
-    def outlier_thresh(df, threshold=3):
 
-        _ = df['target_COV'].hist(bins=100)
+class SklearnLogger():
 
-        outlier_thresh = df['target_COV'].mean()+threshold*df['target_COV'].std()
-        print("Outlier Threshold Applied:", outlier_thresh)
+    def feature_diff(df, id_col, comp_col):
 
-        df = df.query('target_COV < '+str(outlier_thresh))
-        _ = df['target_COV'].pow(0.5).hist(bins=100)
+        items = df[id_col].unique()
 
-        return df
+        start_diff_dict = dict()
+        end_diff_dict = dict()
 
-    def col_startswith(df, startswith_criteria="R_"):
+        for item in items:
 
-        df_change = df[[col for col in df.columns
-                        if col.startswith(startswith_criteria)
-                        and not col == "year.1"]]
+            model_indexs = (np.where(df[id_col].str.match(item) == True)
+                            [0].tolist())
 
-        return df_change
+            comps = df[comp_col].iloc[model_indexs].to_list()
 
-    def col_endswith(df, endswith_criteria="R_"):
+            for i in reversed(range(0, len(model_indexs))):
 
-        df_change = df[[col for col in df.columns
-                        if col.endswith(endswith_criteria)
-                        and not col == "year.1"]]
+                if i == len(model_indexs) - 1:
 
-        return df_change
+                    start_diff_dict.update({model_indexs[-1]: "End"})
+                    end_diff_dict.update({model_indexs[-1]: "End"})
 
-    def col_not_startswith(df, startswith_criteria="R_"):
+                else:
 
-        df_change = df[[col for col in df.columns
-                        if not col.startswith(startswith_criteria)
-                        and not col == "year.1"]]
+                    diff = list(set(comps[i+1]).difference(set(comps[i])))
 
-        return df_change
+                    diff_start = (np.unique([col[:col.find("_")]
+                                             for col in diff])
+                                  .tolist())
 
-    def col_not_endswith(df, endswith_criteria="R_"):
+                    diff_end = (np.unique([col[col.find("__"):]
+                                for col in diff])
+                                .tolist())
 
-        df_change = df[[col for col in df.columns
-                        if not col.endswith(endswith_criteria)
-                        and not col == "year.1"]]
+                    start_diff_dict.update({model_indexs[i]: diff_start})
 
-        return df_change
+                    end_diff_dict.update({model_indexs[i]: diff_end})
 
-    def solar_mwh_hot_months(df, column_name=""):
+        df["col_start_diff"] = (df.reset_index()["index"]
 
-        df[column_name] = df['Hot Summer Months'] * df['Agg_R_Solar_MWh']
+                                .apply(lambda x: start_diff_dict[x]))
+
+        df["col_end_diff"] = (df.reset_index()["index"]
+
+                                .apply(lambda x: end_diff_dict[x]))
 
         return df
