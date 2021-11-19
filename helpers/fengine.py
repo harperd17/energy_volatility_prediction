@@ -5,7 +5,7 @@ class Fengine:
         _ = df['target_COV'].hist(bins=100)
 
         outlier_thresh = df['target_COV'].mean()+threshold*df['target_COV'].std()
-        print(outlier_thresh)
+        print("Outlier Threshold Applied:", outlier_thresh)
 
         df = df.query('target_COV < '+str(outlier_thresh))
         _ = df['target_COV'].pow(0.5).hist(bins=100)
