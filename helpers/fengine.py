@@ -118,3 +118,27 @@ class Fengine:
       df[new_names] = encoded
       del df[col]
       return df
+
+    def average_weather_columns(df,string_term,or_terms, weights=None, new_name = None):
+      # string term - a term that must be matched in column names
+      # or_terms - a list of terms that can be tacked onto the end of the string term to complete the column names of interest ex. string_term = 'Average ' and or_terms = [1,2,3] would look at columns ['Averag 1','Average 2','Average 3']
+      # weights - defaults to None so that equal weights are given, but if you wanted unequal weights - like giving month of July more weight than june or august, these weights could be passed
+      cols_to_average = []
+      for t in or_terms:
+        cols_to_average.append(str(string_term)+str(t))
+      if new_name is None:
+        new_name = ''
+        for s in string_terms:
+          new_name += s
+        for t in or_terms:
+          new_name += str(t)
+      if weights is None:
+        weights = [1]*len(cols_to_average)
+      if len(weights) != len(cols_to_average):
+        raise ValueError("weights argument must be same length as 'or_terms'. There are {} columns and the weights passed in are length {}.\n{}".format(len(cols_to_average),len(weights),cols_to_average))
+      df[new_name] =  [0]*df.shape[0]
+      for i, col in enumerate(cols_to_average):
+        df[new_name] = df[new_name] + df[col]*weights[i]
+        del df[col]
+      df[new_name] = df[new_name]/sum(weights)
+      return df
