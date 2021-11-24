@@ -54,7 +54,7 @@ class Fengine:
 
         return df
     
-    def add_entities(df):
+    def add_entities(df,name=None):
       # variable to show which region a state belongs to
       # https://www.nerc.com/AboutNERC/keyplayers/Pages/default.aspx
       WECC = ['WA','OR','CA','ID','NV','AZ','UT','MT','CO','WY','NM']
@@ -71,7 +71,7 @@ class Fengine:
       df['NPCC'] = df['State'].isin(NPCC).astype(int)
       return df
 
-    def add_carbon_policy(df):
+    def add_carbon_policy(df,name=None):
       # give states that have some sort of carbon policy a value of 1
       # variable to track whether states are part of a carbon pricing program - https://www.c2es.org/document/us-state-carbon-pricing-policies/
       CA_CAP = ['CA','WA']
@@ -84,7 +84,7 @@ class Fengine:
       df['MA Cap'] = df['State'].isin(MA_CAP).astype(int)
       return df
 
-    def standardize_numeric_by_state(df):
+    def standardize_numeric_by_state(df,name=None):
       df_mean = df.groupby(by='State').mean().reset_index()
       df_std = df.groupby(by='State').std().reset_index()
       for col in df.columns:
@@ -97,14 +97,14 @@ class Fengine:
           del df[col]
       return df
 
-    def standardize_numeric_by_nation(df):
+    def standardize_numeric_by_nation(df,name=None):
       for col in df.columns:
         if is_numeric_dtype(df[col]):
           df[str(col)+'_stand'] = (df[col] - df[col].mean())/df[col].std()
           del df[col]
       return df
 
-    def one_hot_encode(df,col):
+    def one_hot_encode(df,col,name=None):
       encoder = OneHotEncoder(sparse=False)
       encoder.fit(np.array(df[col]).reshape(-1,1))
       encoded = encoder.transform(np.array(df[col]).reshape(-1,1))
