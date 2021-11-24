@@ -87,7 +87,11 @@ class Fengine:
     def standardize_numeric_by_state(df,name=None):
       df_mean = df.groupby(by='State').mean().reset_index()
       df_std = df.groupby(by='State').std().reset_index()
-      for col in df.columns:
+      if name is None:
+        col_to_loop_through = list(df.columns)
+      else:
+        col_to_loop_through = [name]
+      for col in col_to_loop_through:
         if is_numeric_dtype(df[col]):
           df_mean['Mean '+str(col)] = df_mean[col]
           df_std['Std '+str(col)] = df_std[col]
@@ -98,7 +102,11 @@ class Fengine:
       return df
 
     def standardize_numeric_by_nation(df,name=None):
-      for col in df.columns:
+      if name is None:
+        col_to_loop_through = list(df.columns)
+      else:
+        col_to_loop_through = [name]
+      for col in col_to_loop_through:
         if is_numeric_dtype(df[col]):
           df[str(col)+'_stand'] = (df[col] - df[col].mean())/df[col].std()
           del df[col]
