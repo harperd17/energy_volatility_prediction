@@ -151,3 +151,7 @@ class Fengine:
         del df[col]
       df[new_name] = df[new_name]/sum(weights)
       return df
+    
+    def power(df, col_name, power):
+        df[col_name] = df[col_name].pow(power)
+        return df
