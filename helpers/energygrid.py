@@ -74,7 +74,7 @@ class EGRID:
             "other biomass gas": "OBG",
             "subbituminous coal": "SUB",
             "geothermal": "GEO",
-            "batteries or other use of electricity as an energy source": "MWH",
+            "batteries or other electricity sources": "MWH",
             "waste heat": "WH", "non-biogenic municipal solid waste": "MSN",
             "wood/wood waste solids": "WDS",
             "municipal solid waste": "MSW",
@@ -124,7 +124,7 @@ class EGRID:
 
 
             "GEO": "Geothermal",
-            "MWH": "batteries or other use of electricity as an energy source",
+            "MWH": "batteries or other electricity sources",
 
             "MSN": "Municipal Waste",
             "MSW": "Municipal Waste",
