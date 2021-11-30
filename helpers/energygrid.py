@@ -7,8 +7,50 @@ from typing import Optional
 class EGRID:
 
     states: Optional[list] = None
-    plant_fuel_types: Optional[list] = None
+    plant_fuel_types: Optional[dict] = None
+    plant_fuel_type_agg_tags: Optional[dict] = None
     layout: Optional[list] = None
+
+    def agg_fuel_types(self, df):
+
+        df_agg = pd.DataFrame()
+
+        unique_agg_fuel_types = _get_unique_agg_fuel_types()
+
+        for agg_fuel_type in unique_agg_fuel_types:
+
+            keep_fuel_types = list()
+
+            for k, v in plant_fuel_type_agg_tags.items:
+
+                if v == agg_fuel_type:
+
+                    keep_columns.append(k)
+
+            keep_columns = ([col for col in df.columns
+                            if col.startswith("R") &
+                            col.split("_")[1] in keep_fuel_types]
+                            )
+
+            df_filter = df[keep_columns]
+
+            count_columns = [col for col in df_filter.columns if col.endswith("count")]
+            mWh_columns = [col for col in df_filter.columns if col.endswith("mWh")]
+
+            df_agg[f"R_{agg_fuel_type}_count"] = df_filter[count_columns].sum(axis=1)
+            df_agg[f"R_{agg_fuel_type}_mWh"] = df_filter[mWh_columns].sum(axis=1)
+
+        return df_agg
+
+    def _get_unique_agg_fuel_types(self):
+
+        unique_fuel_types = set()
+
+        for k, v in self.plant_fuel_type:
+
+            unique_agg_fuel_types.add(v)
+
+        return list(unique_fuel_types)
 
     def get_states(self) -> list:
         states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
@@ -74,7 +116,7 @@ class EGRID:
             "other biomass gas": "OBG",
             "subbituminous coal": "SUB",
             "geothermal": "GEO",
-            "batteries or other electricity sources": "MWH",
+            "batteries or other electricity energy sources": "MWH",
             "waste heat": "WH", "non-biogenic municipal solid waste": "MSN",
             "wood/wood waste solids": "WDS",
             "municipal solid waste": "MSW",
@@ -83,9 +125,9 @@ class EGRID:
             "refined coal": "RC",
         }
 
-    def get_plant_fuel_types_tags(self) -> dict:
+    def get_plant_fuel_type_agg_tags(self) -> dict:
 
-        self.plant_fuel_type_tags = {
+        self.plant_fuel_type_agg_tags = {
             "WAT": "Hydroelectric",
             "BIT": "Coal",
             "SUB": "Coal",
@@ -103,6 +145,7 @@ class EGRID:
             "OBG": "Biomass",
             "WDS": "Biomass",
             "MSB": "Biomass",
+            "BLQ": "Biomass",
 
             "PG": "Oil Gas",
             "WO": "Oil Gas",
@@ -111,7 +154,6 @@ class EGRID:
             "RFO": "Oil Gas",
             "JF": "Oil Gas",
             "BFG": "Oil Gas",
-            "BLQ": "Oil Gas",
             "TDF": "Oil Gas",
             "PC": "Oil Gas",
             "DFO": "Oil Gas",
@@ -124,7 +166,7 @@ class EGRID:
 
 
             "GEO": "Geothermal",
-            "MWH": "batteries or other electricity sources",
+            "MWH": "batteries or other electricity energy sources",
 
             "MSN": "Municipal Waste",
             "MSW": "Municipal Waste",
