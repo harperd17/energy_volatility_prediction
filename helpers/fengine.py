@@ -156,7 +156,7 @@ class Fengine:
         df[col_name] = df[col_name].pow(power)
         return df
 
-    def scale_month_columns(df, None):
+    def scale_month_columns(df, none=None):
         month_cols = [x for x in df if "Months" in x]
         df[month_cols] /= 12
         return df
@@ -175,7 +175,7 @@ class Fengine:
         df = df.drop(columns=cols_to_drop)
         return df
     
-    def treat_bad_values(df,None):
+    def treat_bad_values(df,none=None):
         df.replace([np.inf,-np.inf],np.nan,inplace=True)
         df = df.dropna(axis=1,how='all')
         return df
