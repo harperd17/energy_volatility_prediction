@@ -32,6 +32,8 @@ from sklearn.metrics import explained_variance_score,r2_score
 from sklearn.metrics import mean_squared_error as mse
 from sklearn.model_selection import GridSearchCV
 
+random_state=0
+
 def feature_engineering_pipeline(df,py_library,func_list):
 
     df_model = df
