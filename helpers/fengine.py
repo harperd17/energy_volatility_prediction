@@ -48,6 +48,13 @@ class Fengine:
                         and not col == "year.1"]]
 
         return df_change
+    
+    def col_not_have(df,string_term):
+        df_change = df[[col for col in df.columns
+                        if not string_term in str(col)]]
+
+        return df_change
+        
 
     def solar_mwh_hot_months(df, column_name=""):
 
