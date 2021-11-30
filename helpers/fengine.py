@@ -155,3 +155,29 @@ class Fengine:
     def power(df, col_name, power):
         df[col_name] = df[col_name].pow(power)
         return df
+
+    def scale_month_columns(df, None):
+        month_cols = [x for x in df if "Months" in x]
+        df[month_cols] /= 12
+        return df
+    
+    def min_max_scale(df,col_name_list):
+        df[col_name_list] = MinMaxScaler().fit_transform(df[col_name_list])
+        return df
+    
+    def categorize(df,col):
+#         codes = df[col].astype("category")
+#         code_dict = dict(enumerate(codes.cat.categories))
+        df[col] = df[col].astype("category").cat.codes
+        return df
+    
+    def drop_columns(df,cols_to_drop):
+        df = df.drop(columns=cols_to_drop)
+        return df
+    
+    def treat_bad_values(df,None):
+        df.replace([np.inf,-np.inf],np.nan,inplace=True)
+        df = df.dropna(axis=1,how='all')
+        return df
+    
+    
