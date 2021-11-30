@@ -125,7 +125,7 @@ class EGRID:
             "refined coal": "RC",
         }
 
-    def get_plant_fuel_type_agg_tags(self) -> dict:
+def get_plant_fuel_type_agg_tags(self) -> dict:
 
         self.plant_fuel_type_agg_tags = {
             "WAT": "Hydroelectric",
@@ -166,7 +166,7 @@ class EGRID:
 
 
             "GEO": "Geothermal",
-            "MWH": "batteries or other electricity energy sources",
+            "MWH": "batteries or other use of electricity as an energy source",
 
             "MSN": "Municipal Waste",
             "MSW": "Municipal Waste",
@@ -176,3 +176,4 @@ class EGRID:
             "WH": "Other",
 
         }
+
