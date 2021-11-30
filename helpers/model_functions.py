@@ -180,7 +180,7 @@ def get_neptune_key(username):
 
     return api_token
   
- def plot_test_train(X_train,X_test,y_train,y_test):
+def plot_test_train(X_train,X_test,y_train,y_test):
 
 
     _ = plt.plot(range(X_train.shape[0]),y_train,label="Train")
