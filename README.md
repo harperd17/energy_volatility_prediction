@@ -24,12 +24,19 @@ We started with daily open, high, low, close, and volume for the following futur
 Data Notebooks           : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Ingestion>Data Ingestion </a>
                          Here is where data is ingested and aggregated to meet the format of one row per year and state.
                          : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Filling>Data Filling </a>
+                         Here is where we filled in missing years of electric accounts data using regression. 
                          : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Validation>Data Validation </a>
+                         Here is where we do validation of the plant and energy source data.
 
 EDA Notebooks            : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/EDA>EDA </a>
-
+                         Here is where we have our notebooks for EDA. This includes basic EDA and EDA that explores the relationships of different variables to the target                              variable.
+                         
 Modeling Notebooks       : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Modeling>Modeling </a>
+                         Here is where all our modeling notebooks are stored. We have one notebook for decision tree classifier, one for linear regression, another for XGB                            regression, and lastly, a notebook where we explore all types of models using the neptune logging functionality.
                 
 Slide Decks              : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/powerpoints>Powerpoints </a>
+                         Our phase 1, 2, and 3 slide decks can be found here.
+
 Helper Function Files    : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/helpers>Helper Functions </a>
+                         Commonly used functions are stored in files across this folder and used throughout our project.
 </pre>
