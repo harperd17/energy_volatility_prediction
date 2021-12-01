@@ -49,9 +49,10 @@ class Fengine:
 
         return df_change
     
-    def col_not_have(df,string_term):
+    def col_not_have_and_has(df,string_term_have,string_term_not_have):
+        # removes all columns that have a certain string term in them, but not those that have a certain string in it - ex. remove all Temp Averages except Temp Average 7
         df_change = df[[col for col in df.columns
-                        if not string_term in str(col)]]
+                        if not (string_term_have in str(col) and string_term_not_have not in str(col))]]
 
         return df_change
         
