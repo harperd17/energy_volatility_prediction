@@ -188,4 +188,12 @@ class Fengine:
         df = df.dropna(axis=1,how='all')
         return df
     
+    def encode_state_by_COV(df,none=None):
+        COV_by_state = df.groupby(by='State').mean().reset_index()[['State','target_COV']].sort_values(by='target_COV')
+        sorted_states = pd.Series(COV_by_state['State']).reset_index(drop=True)
+        state_to_code = {}
+        for i, s in enumerate(sorted_states):
+          state_to_code[s] = i
+        df['State'] = [state_to_code[s] for s in df['State']]
+        return df
     
