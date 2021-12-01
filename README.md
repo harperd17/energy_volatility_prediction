@@ -23,12 +23,12 @@ We started with daily open, high, low, close, and volume for the following futur
 <pre>
 Data Notebooks           : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Ingestion>Data Ingestion </a>
                          : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Filling>Data Filling </a>
-                         : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebook/Validation>Data Validation </a>
+                         : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Validation>Data Validation </a>
 
 EDA Notebooks            : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/EDA>EDA </a>
 
 Modeling Notebooks       : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Modeling>Modeling </a>
                 
-Slide Decks              : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/powerpoints>Powerpoints </a>
-Helper Function Files    : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/helpers>Helper Functions </a>
+Slide Decks              : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/powerpoints>Powerpoints </a>
+Helper Function Files    : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/helpers>Helper Functions </a>
 </pre>
