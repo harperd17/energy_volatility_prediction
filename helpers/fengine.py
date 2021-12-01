@@ -170,7 +170,7 @@ class Fengine:
         return df
     
     def min_max_scale(df,col_name_list):
-        df[col_name_list] = MinMaxScaler().fit_transform(df[col_name_list])
+        df[col_name_list] = MinMaxScaler().fit_transform(df[[col_name_list]])
         return df
     
     def categorize(df,col):
