@@ -18,3 +18,17 @@ We have historical monthly electricity net generation data from each plant in th
 We have monthly historical temperatures and palmer drought severity index values (pdsi) across the US gridded at a 60km x 60km resolution. Data from 1981 to 2000 was used to calculate averages and standard deviations from each of these locations. These were used to standardize the data for our years of interest (2001-2020). This data is aggregated to a state level. Currently, we are using three derived terms; number of summer months with temperatures above 1 standard deviation above the mean, number of winter months with temperatures below 1 standard deviation below the mean, and number of months with a pdsi value lower than 1 standard deviation below the mean (the lower the pdsi, the worse the drought).<br>
 ## Futures Contracts<br>
 We started with daily open, high, low, close, and volume for the following futures contracts; NG (natural gas), CL (crude oil), BZ (brent crude oil), and HO (heating oil). Daily price movement was derived as the difference between the high and low price for each day. A moving average and standard deviation of the price movement and volume was used to standardize these variables. For each year and futures symbol, the total number of days with above average price movement and volume is calculated (the current names of these variables is misleading and should be changed).<br>
+## Repository Contents
+---
+<pre>
+Data Notebooks           : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Ingestion>Data Ingestion </a>
+                         : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Filling>Data Filling </a>
+                         : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebook/Validation>Data Validation </a>
+
+EDA Notebooks            : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/EDA>EDA </a>
+
+Modeling Notebooks       : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Modeling>Modeling </a>
+                
+Slide Decks              : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/powerpoints>Powerpoints </a>
+Helper Function Files    : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/helpers>Helper Functions </a>
+</pre>
