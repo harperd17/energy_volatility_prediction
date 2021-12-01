@@ -22,6 +22,7 @@ We started with daily open, high, low, close, and volume for the following futur
 ---
 <pre>
 Data Notebooks           : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Ingestion>Data Ingestion </a>
+                         Here is where data is ingested and aggregated to meet the format of one row per year and state.
                          : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Data%20Filling>Data Filling </a>
                          : <a href=https://github.com/harperd17/energy_volatility_prediction/tree/main/notebooks/Validation>Data Validation </a>
 
