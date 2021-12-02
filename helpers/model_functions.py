@@ -49,13 +49,13 @@ def feature_engineering_pipeline(df,py_library,func_list):
     return df_model
 
 
-def split_dataset(df,train_size=0.80,target="target_COV"):
+def split_dataset(df,train_size=0.80,target="target_COV", stratify=None):
 
     X = df[[col for col in df.columns if col != target]]
 
     y = df[target]
 
-    X_train,X_test,y_train,y_test = tts(X.to_numpy(),y.to_numpy(),random_state=random_state,train_size=train_size)
+    X_train,X_test,y_train,y_test = tts(X.to_numpy(),y.to_numpy(),random_state=random_state,train_size=train_size,stratify=stratify)
 
     print("Split Dataset into","Train_size =",train_size,"Test_size = ",1-train_size)
 
